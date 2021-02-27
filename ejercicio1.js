@@ -1,6 +1,5 @@
 //Función que me permita encontrar todas las ordenes que contengan de ingredients lechuga y palta
-const filterOrdersByInredients = () => sandwichOrders.filter(sandwichOrder => (sandwichOrder.ingredients.includes('lechuga') && 
-sandwichOrder.ingredients.includes('palta')))
+const filterOrdersByInredients = () => sandwichOrders.filter(({ingredients}) => (ingredients.includes('lechuga') && ingredients.includes('palta')))
 
 //Función que me permita encontrar una orden a través del id y que me devuelva un string con el siguiente formato de ejemplo: 
 //La orden fue realizada el (09-10-2020), la orden llevó (mechada) y (bagette). En caso de no encontrar nada a través del id, el mensaje, 
@@ -18,12 +17,12 @@ const filterOrdersById = (id) => {
 
 //Función que me permita encontrar una orden a través del id y que me indique si la orden incluye pepinillos entre sus ingredients, 
 //debería devolver un true|false como respuesta.
-const getOrderByIdAskForPickles = (id) => sandwichOrders.find(sandwichOrder => sandwichOrder.id === id).ingredients.includes('pepinillos') ? true : false 
+const getOrderByIdAskForPickles = (idBuscar) => sandwichOrders.find(({id}) => id === idBuscar).ingredients.includes('pepinillos') ? true : false 
 
 //Función que me permita encontrar todas las orden que se hicieron en un día en específico, es decir, si yo coloco 20-10-2020, la 
 //función me debería devolver: Se encontraron N ordenes para la fecha 20-10-2020.
 const getOrdersByDates = (date) => {
-    const orders = sandwichOrders.filter(sandwichOrder => sandwichOrder.ordered === date)
+    const orders = sandwichOrders.filter(({ordered}) => ordered === date)
     return `Se encontraron ${orders.length} ordenes para la fecha ${date}`
 } 
 
